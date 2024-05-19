@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
+import { json, useLoaderData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,7 +11,17 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async ({ context }: LoaderFunctionArgs) => {
+  const { DB } = context.cloudflare.env;
+  const ps = DB.prepare("select * from glosary_category");
+  const data = await ps.first();
+
+  return json(data);
+};
+
 export default function Index() {
+  const data = useLoaderData<typeof loader>();
+  console.log(data);
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix (with Vite and Cloudflare) adsd</h1>
