@@ -10,7 +10,6 @@ import {
 } from "@remix-run/react";
 // import stylesheet from "./tailwind.css?url";
 import stylesheet from "~/tailwind.css?url";
-import { themeSessionResolver } from "./routes/sessions.server";
 import {
   PreventFlashOnWrongTheme,
   Theme,
@@ -18,6 +17,7 @@ import {
   useTheme,
 } from "remix-themes";
 import Header from "./components/header";
+import { themeSessionResolver } from "./routes/sessions.server";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },

@@ -13,7 +13,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
-    remix(),
+    remix({
+      ignoredRouteFiles: ["**/*server.ts", "**/*.css?url"],
+    }),
     tsconfigPaths(),
     // babel({
     //   filter: /\.[jt]sx?$/,
