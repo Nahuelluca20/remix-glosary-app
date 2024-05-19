@@ -1,5 +1,6 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
 import { json, useLoaderData } from "@remix-run/react";
+import { db } from "db";
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,10 +14,13 @@ export const meta: MetaFunction = () => {
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
   const { DB } = context.cloudflare.env;
-  const ps = DB.prepare("select * from glosary_category");
-  const data = await ps.first();
 
-  return json(data);
+  const result = await db(DB)
+    .selectFrom("glossary_category")
+    .selectAll()
+    .executeTakeFirst();
+
+  return json(result);
 };
 
 export default function Index() {
