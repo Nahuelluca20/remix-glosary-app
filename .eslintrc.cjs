@@ -23,12 +23,15 @@ module.exports = {
 
   // Base config
   extends: ["eslint:recommended"],
+  rules: {
+    'react-compiler/react-compiler': "error",
+  },
 
   overrides: [
     // React
     {
       files: ["**/*.{js,jsx,ts,tsx}"],
-      plugins: ["react", "jsx-a11y"],
+      plugins: ["react", "jsx-a11y", 'eslint-plugin-react-compiler',],
       extends: [
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
