@@ -22,7 +22,6 @@ export const loader = async ({ context, params }: LoaderFunctionArgs) => {
 
 export default function Route() {
   const data = useLoaderData<typeof loader>();
-  console.log(data);
   return (
     <section>
       <div className="max-w-[900px] w-full mx-auto">
