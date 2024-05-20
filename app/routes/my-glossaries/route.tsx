@@ -1,7 +1,8 @@
 import { MetaFunction, LoaderFunctionArgs, json } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { db } from "db";
 import { firstLetterUpperCase } from "utils/strings-utils";
+import { Button } from "~/components/ui/Button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -31,11 +32,18 @@ export default function Route() {
     <section>
       {data.map((item) => (
         <div
-          className="shadow-2xl max-w-[300px] p-4 rounded-md border border-teal-200"
+          className="shadow-2xl max-w-[300px] p-4 rounded-md border-2 border-teal-900"
           key={`glossary-${item.id}`}
         >
-          <h3>{firstLetterUpperCase(item.category_name)}</h3>
+          <h3 className="text-2xl font-bold">
+            {firstLetterUpperCase(item.category_name)}
+          </h3>
           <p>{item.category_desc}</p>
+          <div className="mt-4 w-full flex justify-end">
+            <Link to={`/my-glossaries/${item.id}`}>
+              <Button>See</Button>
+            </Link>
+          </div>
         </div>
       ))}
     </section>
