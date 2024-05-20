@@ -1,3 +1,7 @@
 export const firstLetterUpperCase = (str: string) => {
-  return str.charAt(0).toLocaleUpperCase() + str.slice(1);
+  if (str) {
+    return str.charAt(0).toLocaleUpperCase() + str.slice(1);
+  } else {
+    return "";
+  }
 };
