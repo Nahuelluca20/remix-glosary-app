@@ -36,7 +36,3 @@ export default function Route() {
     </section>
   );
 }
-
-// export default function route() {
-//   return <div>proof</div>;
-// }
