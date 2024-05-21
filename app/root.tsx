@@ -36,7 +36,6 @@ function App() {
     theme: string;
   } = useLoaderData();
   const [theme] = useTheme();
-  console.log(data.theme);
   return (
     <html lang="en" data-mode={theme ?? ""} className={clsx(theme)}>
       <head>
