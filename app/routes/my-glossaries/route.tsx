@@ -21,8 +21,8 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
     .selectFrom("glossary_category")
     .selectAll()
     .execute();
-
-  return json(result);
+  const headers = { "Cache-Control": "public, max-age=60" };
+  return json(result, { headers });
 };
 
 export default function Route() {

@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/Button";
 export const loader = async ({ context, params }: LoaderFunctionArgs) => {
   const { DB } = context.cloudflare.env;
   const slug = params.slug;
+  const headers = { "Cache-Control": "public, max-age=60" };
 
   if (slug) {
     const result = await db(DB)
@@ -14,7 +15,7 @@ export const loader = async ({ context, params }: LoaderFunctionArgs) => {
       .where("id", "=", slug)
       .executeTakeFirst();
 
-    return json(result);
+    return json(result, { headers });
   } else {
     return null;
   }

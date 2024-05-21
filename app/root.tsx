@@ -26,9 +26,9 @@ export const links: LinksFunction = () => [
 
 export const loader: LoaderFunction = async ({ request }) => {
   const { getTheme } = await themeSessionResolver(request);
-  return {
-    theme: getTheme(),
-  };
+  const theme = getTheme();
+
+  return { theme };
 };
 
 function App() {
@@ -36,12 +36,13 @@ function App() {
     theme: string;
   } = useLoaderData();
   const [theme] = useTheme();
+  console.log(data.theme);
   return (
     <html lang="en" data-mode={theme ?? ""} className={clsx(theme)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme || "")} />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme)} />
         <Meta />
         <Links />
       </head>
