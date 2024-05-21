@@ -19,9 +19,9 @@ export default function Index() {
         <li>
           <Link to="/my-glossaries">My categories</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/create-glossary">Create glossary</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

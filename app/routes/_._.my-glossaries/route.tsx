@@ -1,8 +1,8 @@
 import { MetaFunction, LoaderFunctionArgs, json } from "@remix-run/cloudflare";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { db } from "db";
 import { firstLetterUpperCase } from "utils/strings-utils";
-import { Button } from "~/components/ui/Button";
+import LinkButton from "~/components/buttons/link-button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -40,9 +40,7 @@ export default function Route() {
           </h3>
           <p>{item.category_desc}</p>
           <div className="mt-4 w-full flex justify-end">
-            <Link to={`${item.id}`}>
-              <Button>See</Button>
-            </Link>
+            <LinkButton to={item.id}>See</LinkButton>
           </div>
         </div>
       ))}

@@ -18,7 +18,6 @@ import {
 } from "remix-themes";
 import Header from "./components/header";
 import { themeSessionResolver } from "./routes/sessions.server";
-import clsx from "clsx";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -37,7 +36,7 @@ function App() {
   } = useLoaderData();
   const [theme] = useTheme();
   return (
-    <html lang="en" data-mode={theme ?? ""} className={clsx(theme)}>
+    <html lang="en" data-mode={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
