@@ -7,7 +7,7 @@ export default function Header() {
       className="flex w-full justify-between mb-10"
       aria-label="Primary"
     >
-      <h3 className="text-xl font-bold">RateLimiter</h3>
+      <h3 className="text-xl font-bold">Fast Look</h3>
       <ModeToggle />
       {/* <ul>
         <li>

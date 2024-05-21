@@ -40,7 +40,7 @@ export default function Route() {
           </h3>
           <p>{item.category_desc}</p>
           <div className="mt-4 w-full flex justify-end">
-            <Link to={`/my-glossaries/${item.id}`}>
+            <Link to={`${item.id}`}>
               <Button>See</Button>
             </Link>
           </div>
